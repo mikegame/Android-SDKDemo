@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <ImageView
+            android:id="@+id/imbg"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+
+            >
+
+        </ImageView>
+        <Button android:id="@+id/init"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="init"/>
+        <Button android:id="@+id/login"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/init"
+            android:text="login"/>
+        <Button android:id="@+id/pay"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/login"
+            android:text="pay"/>
+        <Button android:id="@+id/center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/pay"
+            android:text="center"/>
+        <Button android:id="@+id/logout"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/center"
+            android:text="logout"/>
+    </RelativeLayout>
+
+</LinearLayout>
