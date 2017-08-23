@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mk.mksdkdemo" >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -20,6 +21,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.mk.sdk.ui.activity.MKMainActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKRegisterActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKLoginActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKPhoneLoginActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKCodeLoginActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKResetPasswordActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKAutoLoginActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKServiceActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.users.MKUpdatePasswordActivity" android:theme="@style/mk_main_dialog_theme" />
+
+        <activity android:name="com.mk.sdk.ui.activity.users.MKUserCenterActivity" android:theme="@style/mk_main_dialog_theme" />
+        <activity android:name="com.mk.sdk.ui.activity.other.MKExitActivity" android:theme="@style/mk_main_dialog_theme" />
+
+        <activity android:name="com.mk.sdk.ui.activity.other.MKWebActivity" />
+        <activity android:name="com.mk.sdk.ui.activity.pay.MKPayActivity" />
     </application>
 
 </manifest>
