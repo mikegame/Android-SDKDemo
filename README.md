@@ -46,6 +46,7 @@ import com.mk.sdk.models.biz.output.MKUser;
 
 4. 在AndroidManifest.xml添加以下权限
 ```
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -124,7 +125,12 @@ MKSDK.getInstance().mkPay(orderModel);
 #### 用户注销回调方法
 
 ```java
-MKSDK.getInstance().mkLogout();
+MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
+    @Override
+    public void logout() {
+        Log.e("MKSDKDemo", "注销成功");
+    }
+});
 ```
 
 
