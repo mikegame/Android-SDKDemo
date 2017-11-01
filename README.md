@@ -57,16 +57,12 @@ import com.mk.sdk.models.biz.output.MKUser;
 5. 初始化SDK。并更改对应的参数
 
 #### 初始化SDK
-/**
- *  初始化SDK
- *
  *  @param gameId    游戏编号
  *  @param subGameId 游戏子包
  *  @param apiKey 游戏密钥
  *  @param trackKey 热云广告KEY
  *  @param gameKey  热云运营KEY
  *  @param ryChannelID 渠道ID
- */
 ```java
 MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332","34660a3af6de7c737d51356d21814396", "0588d0cc6e180a5c1c34bd09526f2c03", "unknown");
 ```
