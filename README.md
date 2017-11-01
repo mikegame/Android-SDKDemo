@@ -59,7 +59,7 @@ import com.mk.sdk.models.biz.output.MKUser;
 #### 初始化SDK
 
 ```java
-MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332");
+MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332","34660a3af6de7c737d51356d21814396", "0588d0cc6e180a5c1c34bd09526f2c03", "unknown");
 ```
 
 #### 登陆方法

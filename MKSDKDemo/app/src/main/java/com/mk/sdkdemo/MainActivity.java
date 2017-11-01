@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         imbg = (ImageView) findViewById(R.id.imbg);
 
         /*SDK初始化*/
-        MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332");
+        MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332","34660a3af6de7c737d51356d21814396", "0588d0cc6e180a5c1c34bd09526f2c03", "unknown");
 
         /*注销回调*/
         MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MKSDKDemo", "登陆成功" + text);
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//              YYYY-MM-dd hh:mm:ss
                 Date curDate =  new Date(System.currentTimeMillis());
                 String timeStr = formatter.format(curDate);
 
