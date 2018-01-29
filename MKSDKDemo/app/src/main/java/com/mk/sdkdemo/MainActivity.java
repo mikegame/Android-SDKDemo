@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-
+        final Button initButton = (Button) findViewById(R.id.init);
         final Button loginButton = (Button) findViewById(R.id.login);
         final Button payButton = (Button) findViewById(R.id.pay);
         final Button centerButton = (Button) findViewById(R.id.center);
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         imbg = (ImageView) findViewById(R.id.imbg);
 
         /*SDK初始化*/
-        MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332","34660a3af6de7c737d51356d21814396", "0588d0cc6e180a5c1c34bd09526f2c03", "unknown");
+        init();
 
         /*注销回调*/
         MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
@@ -78,14 +78,23 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("MKSDKDemo", "登陆失败" + errorString);
             }
         });
-//
+
+        initButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("MKSDKDemo","initButton");
+                init();
+            }
+        });
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 MKSDK.getInstance().mkLogin();
             }
         });
-//
+
         payButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 orderModel.setProductId("productId1");
                 orderModel.setServerId("serverId1");
                 orderModel.setServerName("紫陌红尘");
-                orderModel.setTotalFee(1);
+                orderModel.setTotalFee(200);
                 orderModel.setRoleId("9527");
                 orderModel.setRoleName("GG20思密达");
                 orderModel.setProductId("productId1");
@@ -139,6 +148,30 @@ public class MainActivity extends AppCompatActivity {
             buf.append(str.charAt(num));
         }
         return buf.toString();
+    }
+
+    public void init(){
+        MKSDK.getInstance().mkInit(MainActivity.this, 1, 1,
+                "4f76c696869efaa7f84afe5a2d0de332", "0588d0cc6e180a5c1c34bd09526f2c03", "a3bbe541c303dd893a95759a625fda69", "unknown",
+                new MKSDK.IMKSDKInitCallback() {
+                    @Override
+                    public void initSuccess() {
+                        Log.e("MKSDKDemo", "初始化SDK成功");
+                    }
+
+                    @Override
+                    public void initFail(String errorString) {
+                        Log.e("MKSDKDemo", "初始化SDK失败-" + errorString);
+                    }
+                });
+
+        /*注销回调*/
+        MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
+            @Override
+            public void logout() {
+                Log.e("MKSDKDemo", "注销成功");
+            }
+        });
     }
 
     @Override

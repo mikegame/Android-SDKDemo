@@ -5,7 +5,7 @@
 
 演示项目
 ==============
-查看并运行 `Android-SDKDemo/XSSDKDemo`
+查看并运行 `Android-SDKDemo/MKSDKDemo`
 
 
 使用
@@ -52,6 +52,10 @@ import com.mk.sdk.models.biz.output.MKUser;
 <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_LOGS"/>
+<uses-permission android:name="android.permission.GET_TASKS" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 ```
 
 5. 初始化SDK。并更改对应的参数
@@ -64,7 +68,27 @@ import com.mk.sdk.models.biz.output.MKUser;
  *  @param gameKey  热云运营KEY
  *  @param ryChannelID 渠道ID
 ```java
-MKSDK.getInstance().mkInit(MainActivity.this, 1, 1, "4f76c696869efaa7f84afe5a2d0de332","34660a3af6de7c737d51356d21814396", "0588d0cc6e180a5c1c34bd09526f2c03", "unknown");
+MKSDK.getInstance().mkInit(MainActivity.this, 1, 1,
+"4f76c696869efaa7f84afe5a2d0de332", "0588d0cc6e180a5c1c34bd09526f2c03", "a3bbe541c303dd893a95759a625fda69", "unknown",
+new MKSDK.IMKSDKInitCallback() {
+    @Override
+    public void initSuccess() {
+        Log.e("MKSDKDemo", "初始化SDK成功");
+    }
+
+    @Override
+    public void initFail(String errorString) {
+        Log.e("MKSDKDemo", "初始化SDK失败-" + errorString);
+    }
+});
+
+/*注销回调*/
+MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
+@Override
+public void logout() {
+Log.e("MKSDKDemo", "注销成功");
+}
+});
 ```
 
 #### 登陆方法
@@ -76,7 +100,7 @@ MKSDK.getInstance().mkLogin();
 #### 登陆回调方法
 
 ```java
-XSSDK.getInstance().xsLogin(new MKSDK.IMKSDKLoginCallback() {
+MKSDK.getInstance().xsLogin(new MKSDK.IMKSDKLoginCallback() {
     @Override
     public void loginSuccess(MKUser user) {
     String username = user.getUsername();
@@ -103,7 +127,7 @@ XSSDK.getInstance().xsLogin(new MKSDK.IMKSDKLoginCallback() {
 
 @Override
 public void loginFail(String errorString) {
-Log.e("MKSDKDemo", "登陆失败" + errorString);
+    Log.e("MKSDKDemo", "登陆失败" + errorString);
 }
 });
 
