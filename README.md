@@ -100,36 +100,37 @@ MKSDK.getInstance().mkLogin();
 #### 登陆回调方法
 
 ```java
-MKSDK.getInstance().mkLogin(new MKSDK.IMKSDKLoginCallback() {
+MKSDK.getInstance().setSdkLoginCallback(new MKSDK.IMKSDKLoginCallback() {
     @Override
     public void loginSuccess(MKUser user) {
-    String username = user.getUsername();
-    String token = user.getToken();
-    String userId = user.getUsername();
-    String text = "userId = " + userId + ";username = " + username + ";token = " + token;
-    Log.e("MKSDKDemo", "登陆成功" + text);
+        String username = user.getUsername();
+        String accessToken = user.getAccessToken();
+        String userId = user.getUsername();
+        String text = "userId = " + userId + ";username = " + username + ";accessToken = " + accessToken;
+        Log.e("MKSDKDemo", "登陆成功" + text);
 
-    SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日   HH:mm:ss");
-    Date curDate =  new Date(System.currentTimeMillis());
-    String timeStr = formatter.format(curDate);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curDate =  new Date(System.currentTimeMillis());
+        String timeStr = formatter.format(curDate);
 
-    //上报角色信息
-    MKRole role = new MKRole();
-    role.setRoleId("9527");
-    role.setRoleName("凯特琳");
-    role.setServerId("server1");
-    role.setServerName("紫陌红尘");
-    role.setRoleLevel(1);
-    role.setLoginTime(timeStr);
-    MKSDK().mkSaveRole(role);
-}
+        MKRole role = new MKRole();
+        role.setRoleId("9527");
+        role.setRoleName("凯特琳");
+        role.setServerId("server1");
+        role.setServerName("紫陌红尘");
+        role.setRoleLevel(1);
+        role.setLoginTime(timeStr);
+        MKSDK.getInstance().mkSaveRole(role);
+    }
+
+    @Override
+    public void loginFail(String errorString) {
+        Log.e("MKSDKDemo", "登陆失败" + errorString);
+    }
+});
 ```
 
-@Override
-public void loginFail(String errorString) {
-    Log.e("MKSDKDemo", "登陆失败" + errorString);
-}
-});
+
 
 #### 支付方法
 
