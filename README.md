@@ -69,8 +69,8 @@ import com.mk.sdk.models.biz.output.MKUser;
  *  @param ryChannelID 渠道ID
 ```java
 MKSDK.getInstance().mkInit(MainActivity.this, 1, 1,
-"4f76c696869efaa7f84afe5a2d0de332", "0588d0cc6e180a5c1c34bd09526f2c03", "a3bbe541c303dd893a95759a625fda69", "unknown",
-new MKSDK.IMKSDKInitCallback() {
+"4f76c696869efaa7f84afe5a2d0de332", "0588d0cc6e180a5c1c34bd09526f2c03",
+"a3bbe541c303dd893a95759a625fda69", "unknown",new MKSDK.IMKSDKInitCallback() {
     @Override
     public void initSuccess() {
         Log.e("MKSDKDemo", "初始化SDK成功");
@@ -84,10 +84,10 @@ new MKSDK.IMKSDKInitCallback() {
 
 /*注销回调*/
 MKSDK.getInstance().setSdkLogoutCallback(new MKSDK.IMKSDKLogoutCallback() {
-@Override
-public void logout() {
-Log.e("MKSDKDemo", "注销成功");
-}
+    @Override
+    public void logout() {
+        Log.e("MKSDKDemo", "注销成功");
+    }
 });
 ```
 
@@ -100,7 +100,7 @@ MKSDK.getInstance().mkLogin();
 #### 登陆回调方法
 
 ```java
-MKSDK.getInstance().xsLogin(new MKSDK.IMKSDKLoginCallback() {
+MKSDK.getInstance().mkLogin(new MKSDK.IMKSDKLoginCallback() {
     @Override
     public void loginSuccess(MKUser user) {
     String username = user.getUsername();
