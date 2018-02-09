@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         return timeNowString;
     }
 
-
     public String getRandom() {
         String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
         MKSDK.getInstance().getFloatView().showFloatView();
         super.onResume();
     }
-    //
+
     @Override
     protected void onStop() {
         MKSDK.getInstance().getFloatView().removeFloatView();
