@@ -113,6 +113,7 @@ MKSDK.getInstance().setSdkLoginCallback(new MKSDK.IMKSDKLoginCallback() {
         Date curDate =  new Date(System.currentTimeMillis());
         String timeStr = formatter.format(curDate);
 
+        //登陆后或者角色信息发生改变时调用
         MKRole role = new MKRole();
         role.setRoleId("9527");
         role.setRoleName("凯特琳");
